@@ -1,0 +1,53 @@
+<section class="container my-5 p-5 border border-success border-3 rounded">
+    <form #register='ngForm' (ngSubmit)="docFormHandler(register)">
+        <div class="form-group mb-3">
+            <label>Full name</label>
+            <input class="form-control" name="name" [(ngModel)]='doctor.name' 
+            #name="ngModel" required>
+            <div *ngIf="name.invalid && (name.touched||name.dirty)" class="alert alert-danger">
+                <div *ngIf="name.errors.required">name is required</div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label>Specialize</label>
+            <input class="form-control" name="specialize" [(ngModel)]='doctor.specialize' #specialize="ngModel" required>
+            <div *ngIf="specialize.invalid && (specialize.touched||specialize.dirty)" class="alert alert-danger">
+                <div *ngIf="specialize.errors.required">specialize is required</div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label>Address</label>
+            <input class="form-control" name="address" [(ngModel)]='doctor.address' #address="ngModel" required>
+            <div *ngIf="address.invalid && (address.touched||address.dirty)" class="alert alert-danger">
+                <div *ngIf="address.errors.required">address is required</div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label>Phone</label>
+            <input class="form-control" name="phone" #phone='ngModel' [(ngModel)]='doctor.phone'
+            required  minlength="11" pattern="^01[0-2]\d{1,8}$">
+            <div *ngIf="phone.invalid && (phone.touched||phone.dirty)" class="alert alert-danger">
+                <div *ngIf="phone.errors.required">phone is required</div>
+                <div *ngIf="phone.errors.minlength">phone is invalid (min 11 numbers)</div>
+                <div *ngIf="phone.errors.pattern">incorrect phone number</div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label>Whatsapp number</label>
+            <input class="form-control" name="whatsapp" #whatsapp='ngModel' [(ngModel)]='doctor.whatsapp'
+            required  minlength="11" pattern="^01[0-2]\d{1,8}$">
+            <div *ngIf="whatsapp.invalid && (whatsapp.touched||whatsapp.dirty)" class="alert alert-danger">
+                <div *ngIf="whatsapp.errors.required">phone is required</div>
+                <div *ngIf="whatsapp.errors.minlength">phone is invalid (min 11 numbers)</div>
+                <div *ngIf="whatsapp.errors.pattern">incorrect phone number</div>
+            </div>
+        </div>
+        <!-- <div class="form-group mb-3" ngModelGroup="education">
+            <label>Year</label>
+            <input class="form-control" name="name" [(ngModel)]='doctor.education.name'>
+            <label>Name</label>
+            <input class="form-control" name="year" [(ngModel)]='doctor.education.year'>
+        </div> -->
+        <button type="submit" class="btn btn-warning col-3">Add</button>
+    </form>
+</section>

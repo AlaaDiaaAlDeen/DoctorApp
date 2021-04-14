@@ -1,0 +1,23 @@
+<section class="container my-3">
+    <table class="table table-striped table-hover text-center" style="table-layout: fixed;">
+        <thead>
+            <th>Doctor name</th>
+            <th>Specialization</th>
+            <th>Phone number</th>
+            <th>Links</th>
+        </thead>
+        <tbody *ngFor="let doc of doctors">
+            <tr>
+                <td>{{doc.name}}</td>
+                <td>{{doc.specialize}}</td>
+                <td>{{doc.phone}}</td>
+                <td><a class="btn btn-success" routerLink="{{doc._id}}">details</a></td>
+            </tr>
+        </tbody>
+        <tfoot *ngIf="doctors?.length==0">
+            <tr class="alert alert-danger">
+              <td colspan="4">No Doctors Found</td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
